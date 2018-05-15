@@ -1,0 +1,17 @@
+{
+  "name": "now-todos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "dependencies": {
+    "apollo-server": "^2.0.0-beta.1",
+    "graphql": "^0.13.2",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  }
+}
