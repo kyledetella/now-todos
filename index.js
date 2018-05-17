@@ -6,10 +6,17 @@ const chalk = require("chalk");
 const shortid = require("shortid");
 const { ApolloServer, gql } = require("apollo-server");
 const { registerServer } = require("apollo-server-express");
+const { ApolloEngine } = require("apollo-engine");
 
 const todos = [];
-const { PORT = 4000 } = process.env;
+const { PORT = 4000, APOLLO_ENGINE_KEY } = process.env;
 const app = express();
+
+if (!APOLLO_ENGINE_KEY) {
+  throw new Error(
+    "A valid Apollo Engine API key is required. See: https://www.apollographql.com/docs/engine/setup-node.html"
+  );
+}
 
 app.use(bodyParser.json());
 app.use(morgan("dev"));
@@ -50,10 +57,26 @@ const resolvers = {
   }
 };
 
+const engine = new ApolloEngine({
+  apiKey: APOLLO_ENGINE_KEY
+});
+
 // via: https://www.apollographql.com/docs/apollo-server/v2/migration-two-dot.html
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+
+  // Addding Apollo Engine
+  tracing: true,
+  cacheControl: true
+});
 registerServer({ app, server });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+// server.listen().then(({ url }) => {
+//   console.log(`🚀 Server ready at ${url}`);
+// });
+
+engine.listen({
+  port: PORT,
+  expressApp: app
 });

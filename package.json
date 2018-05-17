@@ -8,6 +8,7 @@
     "start": "nodemon ."
   },
   "dependencies": {
+    "apollo-engine": "^1.1.1",
     "apollo-server": "^2.0.0-beta.1",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",

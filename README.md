@@ -9,7 +9,7 @@ A GraphQL service..._TBD_
 - [x] Add logging (morgan?)
 - [ ] Add schema linting (https://github.com/cjoudrey/graphql-schema-linter)
 - [ ] Add constraint directives (https://github.com/confuser/graphql-constraint-directive)
-- [ ] Add Engine/optics
+- [x] Add Engine/optics
 - [ ] Add tests
 - [ ] migrate server to typescript
 - [ ] Introduce yarn workspaces and create a monorepo (for server and client)
@@ -18,6 +18,24 @@ A GraphQL service..._TBD_
 
 # Development
 
+**Note:** You will need to obtain an Apollo Engine API Key. Read more on [Apollo Engine here](https://www.apollographql.com/docs/engine/setup-node.html).
+
 ```
-yarn && yarn start
+APOLLO_ENGINE_KEY=<APOLLO_ENGINE_KEY> yarn && yarn start
+```
+
+# Deployment
+
+## [now](https://zeit.co/now)
+
+### Add secrets
+
+```
+now secrets add apollo-engine-key <APOLLO_ENGINE_KEY>
+```
+
+### Deploy
+
+```
+now -e APOLLO_ENGINE_KEY=@apollo-engine-key
 ```
