@@ -15,3 +15,9 @@ A GraphQL service..._TBD_
 - [ ] Introduce yarn workspaces and create a monorepo (for server and client)
 - [ ] apollo-client
 - [ ] relay client
+
+# Development
+
+```
+yarn && yarn dev
+```
