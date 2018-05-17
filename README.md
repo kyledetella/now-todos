@@ -19,5 +19,5 @@ A GraphQL service..._TBD_
 # Development
 
 ```
-yarn && yarn dev
+yarn && yarn start
 ```
