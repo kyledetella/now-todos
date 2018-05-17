@@ -1,7 +1,8 @@
+const fs = require("fs");
 const express = require("express");
 const morgan = require("morgan");
-const fs = require("fs");
-
+const bodyParser = require("body-parser");
+const chalk = require("chalk");
 const shortid = require("shortid");
 const { ApolloServer, gql } = require("apollo-server");
 const { registerServer } = require("apollo-server-express");
@@ -10,7 +11,18 @@ const todos = [];
 const { PORT = 4000 } = process.env;
 const app = express();
 
+app.use(bodyParser.json());
 app.use(morgan("dev"));
+
+app.use("/graphql", (req, res, next) => {
+  const { operationName } = req.body;
+  console.log(
+    chalk.bold.magenta("[GraphQL Query]:"),
+    operationName || "Anonymous operation!"
+  );
+
+  next();
+});
 
 app.get("/", (req, res) => {
   res.send("ok");
