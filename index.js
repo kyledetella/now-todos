@@ -1,43 +1,47 @@
-const { promisify } = require("util");
+const express = require("express");
+const morgan = require("morgan");
 const fs = require("fs");
 
 const shortid = require("shortid");
 const { ApolloServer, gql } = require("apollo-server");
-
-const readFile = promisify(fs.readFile);
+const { registerServer } = require("apollo-server-express");
 
 const todos = [];
+const { PORT = 4000 } = process.env;
+const app = express();
 
-const startServer = async () => {
-  const schema = await readFile("./schema.graphql", "utf8");
+app.use(morgan("dev"));
 
-  // Construct a schema, using GraphQL schema language
-  const typeDefs = gql`
-    ${schema}
-  `;
+app.get("/", (req, res) => {
+  res.send("ok");
+});
 
-  // Provide resolver functions for your schema fields
-  const resolvers = {
-    Query: {
-      todos: () => todos
-    },
-    Mutation: {
-      createTodo: (context, args) => {
-        const newTodo = { id: shortid, description: args.description };
-        todos.push(newTodo);
+const schema = fs.readFileSync("./schema.graphql", "utf8");
 
-        return newTodo;
-      }
+// Construct a schema, using GraphQL schema language
+const typeDefs = gql`
+  ${schema}
+`;
+
+// Provide resolver functions for your schema fields
+const resolvers = {
+  Query: {
+    todos: () => todos
+  },
+  Mutation: {
+    createTodo: (context, args) => {
+      const newTodo = { id: shortid, description: args.description };
+      todos.push(newTodo);
+
+      return newTodo;
     }
-  };
-
-  const server = new ApolloServer({ typeDefs, resolvers });
-
-  server.listen().then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`);
-  });
+  }
 };
 
-startServer().catch(err => {
-  console.log("ERROR STARTING SERVER", err);
+// via: https://www.apollographql.com/docs/apollo-server/v2/migration-two-dot.html
+const server = new ApolloServer({ typeDefs, resolvers });
+registerServer({ app, server });
+
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
 });
