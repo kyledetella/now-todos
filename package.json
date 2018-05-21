@@ -20,6 +20,7 @@
     "shortid": "^2.2.8"
   },
   "devDependencies": {
+    "dotenv": "^5.0.1",
     "graphql-schema-linter": "^0.1.6",
     "nodemon": "^1.17.4"
   },

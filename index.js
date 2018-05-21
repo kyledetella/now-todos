@@ -8,6 +8,10 @@ const { ApolloServer, gql } = require("apollo-server");
 const { registerServer } = require("apollo-server-express");
 const { ApolloEngine } = require("apollo-engine");
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const todos = [];
 const { PORT = 4000, APOLLO_ENGINE_KEY } = process.env;
 const app = express();
@@ -32,7 +36,7 @@ app.use("/graphql", (req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("ok");
+  res.send(`<a href="/graphql">GraphQL API</a>`);
 });
 
 const schema = fs.readFileSync("./schema.graphql", "utf8");
@@ -72,11 +76,12 @@ const server = new ApolloServer({
 });
 registerServer({ app, server });
 
-// server.listen().then(({ url }) => {
-//   console.log(`🚀 Server ready at ${url}`);
-// });
-
-engine.listen({
-  port: PORT,
-  expressApp: app
-});
+engine.listen(
+  {
+    port: PORT,
+    expressApp: app
+  },
+  () => {
+    console.log(`🚀 Server ready! @:${PORT}`);
+  }
+);

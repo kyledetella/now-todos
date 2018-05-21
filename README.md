@@ -42,5 +42,5 @@ now secrets add apollo-engine-key <APOLLO_ENGINE_KEY>
 ### Deploy
 
 ```
-now -e APOLLO_ENGINE_KEY=@apollo-engine-key
+now -e APOLLO_ENGINE_KEY=@apollo-engine-key -e NODE_ENV=production
 ```
