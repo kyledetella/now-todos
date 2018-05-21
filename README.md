@@ -7,9 +7,9 @@ A GraphQL service..._TBD_
 - [x] Create server using apollo-server 2.0
 - [x] deploy on [now.sh](now.sh)
 - [x] Add logging (morgan?)
-- [ ] Add schema linting (https://github.com/cjoudrey/graphql-schema-linter)
+- [x] Add schema linting (https://github.com/cjoudrey/graphql-schema-linter)
+- [x] Hook up to CI
 - [ ] Add tests
-- [ ] Hook up to CI
 - [ ] Introduce [graphql-import](https://github.com/prismagraphql/graphql-import) (and decomp schema for merge)
 - [ ] Add constraint directives (https://github.com/confuser/graphql-constraint-directive)
 - [ ] Add role-based schema limiting
