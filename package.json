@@ -6,7 +6,8 @@
   "scripts": {
     "now-start": "node .",
     "start": "nodemon . -e js,graphql",
-    "test": "yarn lint-schema",
+    "test": "yarn lint-schema && jest --forceExit --verbose",
+    "jest-watch": "jest --watch", 
     "lint-schema": "graphql-schema-linter ./graphql/**.graphql",
     "lint-schema-watch": "nodemon -e graphql --exec \"yarn run lint-schema\""
   },
@@ -23,6 +24,7 @@
   "devDependencies": {
     "dotenv": "^5.0.1",
     "graphql-schema-linter": "^0.1.6",
+    "jest": "^22.4.4",
     "nodemon": "^1.17.4"
   },
   "graphql-schema-linter": {

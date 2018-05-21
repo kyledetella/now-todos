@@ -11,7 +11,7 @@ A GraphQL service..._TBD_
 - [x] Add logging (morgan?)
 - [x] Add schema linting (https://github.com/cjoudrey/graphql-schema-linter)
 - [x] Hook up to CI
-- [ ] Add tests
+- [x] Add tests
 - [x] Introduce [graphql-import](https://github.com/prismagraphql/graphql-import) (and decomp schema for merge)
 - [ ] Add constraint directives (https://github.com/confuser/graphql-constraint-directive)
 - [ ] Add role-based schema limiting
