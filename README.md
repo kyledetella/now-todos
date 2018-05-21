@@ -10,6 +10,7 @@ A GraphQL service..._TBD_
 - [ ] Add schema linting (https://github.com/cjoudrey/graphql-schema-linter)
 - [ ] Introduce [graphql-import](https://github.com/prismagraphql/graphql-import) (and decomp schema)
 - [ ] Add constraint directives (https://github.com/confuser/graphql-constraint-directive)
+- [ ] Add role-based schema limiting
 - [x] Add Engine/optics
 - [ ] Add tests
 - [ ] migrate server to typescript
