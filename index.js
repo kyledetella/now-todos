@@ -2,11 +2,11 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const chalk = require("chalk");
-const shortid = require("shortid");
 const { ApolloServer, gql } = require("apollo-server");
 const { registerServer } = require("apollo-server-express");
 const { ApolloEngine } = require("apollo-engine");
 const { importSchema } = require("graphql-import");
+const { createTodo, getTodos } = require("./graphql/resolvers/todos");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -49,15 +49,10 @@ const typeDefs = gql`
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    todos: () => todos
+    todos: getTodos
   },
   Mutation: {
-    createTodo: (context, args) => {
-      const newTodo = { id: shortid, description: args.description };
-      todos.push(newTodo);
-
-      return newTodo;
-    }
+    createTodo: createTodo
   }
 };
 
