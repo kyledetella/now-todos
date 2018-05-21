@@ -7,7 +7,7 @@
     "now-start": "node .",
     "start": "nodemon . -e js,graphql",
     "test": "yarn lint-schema",
-    "lint-schema": "graphql-schema-linter ./graphql/schema.graphql",
+    "lint-schema": "graphql-schema-linter ./graphql/**.graphql",
     "lint-schema-watch": "nodemon -e graphql --exec \"yarn run lint-schema\""
   },
   "dependencies": {
