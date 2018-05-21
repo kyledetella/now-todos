@@ -5,9 +5,9 @@
   "license": "MIT",
   "scripts": {
     "now-start": "node .",
-    "start": "nodemon .",
+    "start": "nodemon . -e js,graphql",
     "test": "yarn lint-schema",
-    "lint-schema": "graphql-schema-linter schema.graphql",
+    "lint-schema": "graphql-schema-linter ./graphql/schema.graphql",
     "lint-schema-watch": "nodemon -e graphql --exec \"yarn run lint-schema\""
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "graphql": "^0.13.2",
+    "graphql-import": "^0.5.2",
     "morgan": "^1.9.0",
     "shortid": "^2.2.8"
   },

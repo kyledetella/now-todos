@@ -1,0 +1,7 @@
+# import Todo from "./types.graphql"
+
+"Root mutation"
+type Mutation {
+  "Create a new Todo"
+  createTodo(description: String!): Todo
+}

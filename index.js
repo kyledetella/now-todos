@@ -1,4 +1,3 @@
-const fs = require("fs");
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -7,6 +6,7 @@ const shortid = require("shortid");
 const { ApolloServer, gql } = require("apollo-server");
 const { registerServer } = require("apollo-server-express");
 const { ApolloEngine } = require("apollo-engine");
+const { importSchema } = require("graphql-import");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
   res.send(`<a href="/graphql">GraphQL API</a>`);
 });
 
-const schema = fs.readFileSync("./schema.graphql", "utf8");
+const schema = importSchema("./graphql/schema.graphql");
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`

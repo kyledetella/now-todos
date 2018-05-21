@@ -1,0 +1,5 @@
+"Root query"
+type Query {
+  "Retrieve all todos for the current user"
+  todos: [Todo]!
+}
