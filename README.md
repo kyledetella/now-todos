@@ -1,5 +1,7 @@
 # now-todo
 
+[![CircleCI](https://circleci.com/gh/kyledetella/now-todos/tree/master.svg?style=svg)](https://circleci.com/gh/kyledetella/now-todos/tree/master)
+
 A GraphQL service..._TBD_
 
 # Todo
