@@ -8,11 +8,12 @@ A GraphQL service..._TBD_
 - [x] deploy on [now.sh](now.sh)
 - [x] Add logging (morgan?)
 - [ ] Add schema linting (https://github.com/cjoudrey/graphql-schema-linter)
-- [ ] Introduce [graphql-import](https://github.com/prismagraphql/graphql-import) (and decomp schema)
+- [ ] Add tests
+- [ ] Hook up to CI
+- [ ] Introduce [graphql-import](https://github.com/prismagraphql/graphql-import) (and decomp schema for merge)
 - [ ] Add constraint directives (https://github.com/confuser/graphql-constraint-directive)
 - [ ] Add role-based schema limiting
 - [x] Add Engine/optics
-- [ ] Add tests
 - [ ] migrate server to typescript
 - [ ] Introduce yarn workspaces and create a monorepo (for server and client)
 - [ ] apollo-client

@@ -5,7 +5,10 @@
   "license": "MIT",
   "scripts": {
     "now-start": "node .",
-    "start": "nodemon ."
+    "start": "nodemon .",
+    "test": "yarn lint-schema",
+    "lint-schema": "graphql-schema-linter schema.graphql",
+    "lint-schema-watch": "nodemon -e graphql --exec \"yarn run lint-schema\""
   },
   "dependencies": {
     "apollo-engine": "^1.1.1",
@@ -17,6 +20,21 @@
     "shortid": "^2.2.8"
   },
   "devDependencies": {
+    "graphql-schema-linter": "^0.1.6",
     "nodemon": "^1.17.4"
+  },
+  "graphql-schema-linter": {
+    "rules": [
+      "defined-types-are-used",
+      "deprecations-have-a-reason",
+      "enum-values-all-caps",
+      "enum-values-have-descriptions",
+      "enum-values-sorted-alphabetically",
+      "fields-are-camel-cased",
+      "fields-have-descriptions",
+      "input-object-values-are-camel-cased",
+      "input-object-values-have-descriptions",
+      "types-have-descriptions"
+    ]
   }
 }
