@@ -5,7 +5,7 @@
     "now-start": "node .",
     "start": "nodemon . -e js,graphql",
     "test": "yarn lint-schema && jest --forceExit --verbose",
-    "jest-watch": "jest --watch", 
+    "jest-watch": "jest --watch",
     "lint-schema": "graphql-schema-linter ./graphql/**.graphql",
     "lint-schema-watch": "nodemon -e graphql --exec \"yarn run lint-schema\""
   },
@@ -14,6 +14,7 @@
     "apollo-server": "^2.0.0-beta.1",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
+    "cors": "^2.8.4",
     "graphql": "^0.13.2",
     "graphql-import": "^0.5.2",
     "morgan": "^1.9.0",

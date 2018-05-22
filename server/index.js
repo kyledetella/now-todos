@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const chalk = require("chalk");
 const { ApolloServer, gql } = require("apollo-server");
 const { registerServer } = require("apollo-server-express");
@@ -24,6 +25,8 @@ if (!APOLLO_ENGINE_KEY) {
 
 app.use(bodyParser.json());
 app.use(morgan("dev"));
+// TODO: Lock this down in prod?
+app.use(cors());
 
 app.use("/graphql", (req, res, next) => {
   const { operationName } = req.body;
@@ -36,7 +39,13 @@ app.use("/graphql", (req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send(`<a href="/graphql">GraphQL API</a>`);
+  const { headers } = req;
+
+  if (headers.accept === "application/json") {
+    res.json({ graphQL: "/graphql" });
+  } else {
+    res.send(`<a href="/graphql">GraphQL API</a>`);
+  }
 });
 
 const schema = importSchema("./graphql/schema.graphql");
