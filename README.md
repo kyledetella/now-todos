@@ -19,6 +19,7 @@ A GraphQL service..._TBD_
 - [x] Add Engine/optics
 - [ ] migrate server to typescript
 - [x] Introduce yarn workspaces and create a monorepo (for server and client)
+- [ ] Introduce subscriptions
 - [ ] apollo-client
 - [ ] relay client
 
@@ -60,16 +61,18 @@ yarn start
 
 # Deployment
 
-## [now](https://zeit.co/now)
+## Server
 
-### Add secrets
+### [now](https://zeit.co/now)
+
+#### Add secrets
 
 ```
 now secrets add apollo-engine-key <APOLLO_ENGINE_KEY>
 ```
 
-### Deploy
+#### Deploy
 
 ```
-now -e APOLLO_ENGINE_KEY=@apollo-engine-key -e NODE_ENV=production
+yarn deploy-server
 ```

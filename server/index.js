@@ -74,6 +74,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
 
+  // TODO: We may not always want to do this in production! Consider restricting
+  enableIntrospection: true,
+
   // Addding Apollo Engine
   tracing: true,
   cacheControl: true
