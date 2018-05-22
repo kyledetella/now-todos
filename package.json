@@ -10,8 +10,7 @@
   ],
   "scripts": {
     "deploy-server": "now -e APOLLO_ENGINE_KEY=@apollo-engine-key -e NODE_ENV=production server",
-    "start": "concurrently \"cd server && yarn start\" \"cd client && yarn start\"",
-    "test": "cd server && yarn test"
+    "start": "concurrently \"cd server && yarn start\" \"cd client && yarn start\""
   },
   "devDependencies": {
     "concurrently": "^3.5.1"
