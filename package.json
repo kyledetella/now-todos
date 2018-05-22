@@ -4,5 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "workspaces": ["server", "client"]  
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "start": "concurrently \"cd server && yarn start\" \"cd client && yarn start\""
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
+  }
 }

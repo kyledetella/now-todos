@@ -4,6 +4,7 @@
 
 A GraphQL service..._TBD_
 
+
 # Todo
 
 - [x] Create server using apollo-server 2.0
@@ -17,7 +18,7 @@ A GraphQL service..._TBD_
 - [ ] Add role-based schema limiting
 - [x] Add Engine/optics
 - [ ] migrate server to typescript
-- [ ] Introduce yarn workspaces and create a monorepo (for server and client)
+- [x] Introduce yarn workspaces and create a monorepo (for server and client)
 - [ ] apollo-client
 - [ ] relay client
 
@@ -27,6 +28,28 @@ A GraphQL service..._TBD_
 
 ```
 APOLLO_ENGINE_KEY=<APOLLO_ENGINE_KEY> yarn && yarn start
+```
+
+**Dependencies**
+
+This project uses [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) to create a monorepo. To install dependencies, run `yarn` from the root.
+
+**Run server:**
+
+```
+cd server && yarn start
+```
+
+**Run client:**
+
+```
+cd client && yarn start
+```
+
+**Run both from root:**
+
+```
+yarn start
 ```
 
 # Deployment
