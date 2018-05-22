@@ -24,11 +24,17 @@ A GraphQL service..._TBD_
 
 # Development
 
+## Server
+
 **Note:** You will need to obtain an Apollo Engine API Key. Read more on [Apollo Engine here](https://www.apollographql.com/docs/engine/setup-node.html).
 
+Add the following to a `.env` file in `/server`:
+
 ```
-APOLLO_ENGINE_KEY=<APOLLO_ENGINE_KEY> yarn && yarn start
+APOLLO_ENGINE_KEY=<APOLLO_ENGINE_KEY>
 ```
+
+Or provide the `APOLLO_ENGINE_KEY` environment variable when starting the server.
 
 **Dependencies**
 
