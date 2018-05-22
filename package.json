@@ -4,5 +4,5 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "workspaces": ["now-todos-server", "now-todos-client"]  
+  "workspaces": ["server", "client"]  
 }
