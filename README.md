@@ -18,8 +18,10 @@ A GraphQL service..._TBD_
 - [ ] Add role-based schema limiting
 - [x] Add Engine/optics
 - [ ] migrate server to typescript
+- [ ] Explore using [ts-jest](https://github.com/kulshekhar/ts-jest)
 - [x] Introduce yarn workspaces and create a monorepo (for server and client)
 - [ ] Introduce subscriptions
+- [ ] Add gql2ts
 - [ ] apollo-client
 - [ ] relay client
 

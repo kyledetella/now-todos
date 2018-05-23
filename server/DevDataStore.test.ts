@@ -1,7 +1,7 @@
-const devDataStore = require("./DevDataStore");
+import devDataStore from "./DevDataStore";
 
 describe("DevDataStore", () => {
-  beforeAll(() => {
+  beforeAllg(() => {
     jest
       .spyOn(devDataStore, "__generateId")
       .mockImplementation(() => "test-id");

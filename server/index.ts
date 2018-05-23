@@ -90,5 +90,6 @@ engine.listen(
   },
   () => {
     console.log(`🚀 Server ready! @:${PORT}`);
+    console.log("Running via ts");
   }
 );
