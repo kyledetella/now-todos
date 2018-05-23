@@ -6,7 +6,7 @@
   },
   "scripts": {
     "now-start": "tsc -p .",
-    "start": "nodemon . -e js,graphql",
+    "start": "nodemon -e ts,graphql --exec ts-node index.ts",
     "test": "echo \"$(yarn --version)\" && yarn lint-schema && jest --forceExit --verbose",
     "jest-watch": "jest --watch",
     "lint-schema": "graphql-schema-linter ./graphql/**.graphql",
