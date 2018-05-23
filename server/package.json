@@ -9,8 +9,9 @@
     "start": "nodemon -e ts,graphql --exec ts-node index.ts",
     "test": "echo \"$(yarn --version)\" && yarn lint-schema && jest --forceExit --verbose",
     "jest-watch": "jest --watch",
-    "lint-schema": "graphql-schema-linter ./graphql/**.graphql",
-    "lint-schema-watch": "nodemon -e graphql --exec \"yarn run lint-schema\""
+    "lint-schema": "graphql-schema-linter  --custom-rule-paths=\"./tasks/schemaLinting/inputs_named_correctly.js\" ./graphql/**.graphql",
+    "lint-schema-watch": "nodemon -e graphql --exec \"yarn run lint-schema\"",
+    "generate-types": "ts-node ./tasks/generateTypesFromSchema.ts"
   },
   "dependencies": {
     "@types/cors": "^2.8.4",
@@ -31,6 +32,7 @@
     "typescript": "^2.8.3"
   },
   "devDependencies": {
+    "@gql2ts/from-schema": "^1.8.0",
     "dotenv": "^5.0.1",
     "graphql-schema-linter": "^0.1.6",
     "jest": "^20.0.4",
@@ -39,6 +41,7 @@
   },
   "graphql-schema-linter": {
     "rules": [
+      "inputs-named-correctly",
       "defined-types-are-used",
       "deprecations-have-a-reason",
       "enum-values-all-caps",

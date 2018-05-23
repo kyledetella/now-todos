@@ -1,7 +1,10 @@
 import devDataStore from "../../DevDataStore";
 
-export const createTodo = (_: any, args: { description: string }) => {
-  return devDataStore.createTodo(args.description);
+export const createTodo = (
+  _: any,
+  args: NowTodosGQL.ICreateTodoOnMutationArguments
+) => {
+  return devDataStore.createTodo(args.input.description);
 };
 
 export const getTodos = () => devDataStore.getTodos();

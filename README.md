@@ -21,7 +21,7 @@ A GraphQL service..._TBD_
 - [ ] Explore using [ts-jest](https://github.com/kulshekhar/ts-jest)
 - [x] Introduce yarn workspaces and create a monorepo (for server and client)
 - [ ] Introduce subscriptions
-- [ ] Add gql2ts
+- [x] Add gql2ts
 - [ ] apollo-client
 - [ ] relay client
 
@@ -77,4 +77,12 @@ now secrets add apollo-engine-key <APOLLO_ENGINE_KEY>
 
 ```
 yarn deploy-server
+```
+
+# Generating Types
+
+You can generate Typescript definitions from the GraphQL schema using [gql2ts](https://github.com/avantcredit/gql2ts)
+
+```
+yarn workspace now-todos-server generate-types
 ```

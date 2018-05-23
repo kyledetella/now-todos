@@ -5,3 +5,9 @@ type Todo {
   "The description to be rendered for a given Todo"
   description: String!
 }
+
+"A Todo input"
+input CreateTodoInput {
+  "The description for the Todo"
+  description: String!
+}
