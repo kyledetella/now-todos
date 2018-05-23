@@ -1,19 +1,18 @@
-const express = require("express");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const chalk = require("chalk");
-const { ApolloServer, gql } = require("apollo-server");
-const { registerServer } = require("apollo-server-express");
-const { ApolloEngine } = require("apollo-engine");
-const { importSchema } = require("graphql-import");
-const { createTodo, getTodos } = require("./graphql/resolvers/todos");
+import * as express from "express";
+import * as morgan from "morgan";
+import * as bodyParser from "body-parser";
+import * as cors from "cors";
+import chalk from "chalk";
+import { ApolloServer, gql, IResolvers } from "apollo-server";
+import { registerServer } from "apollo-server-express";
+import { ApolloEngine } from "apollo-engine";
+import { importSchema } from "graphql-import";
+import { createTodo, getTodos } from "./graphql/resolvers/todos";
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-const todos = [];
 const { PORT = 4000, APOLLO_ENGINE_KEY } = process.env;
 const app = express();
 
@@ -28,7 +27,7 @@ app.use(morgan("dev"));
 // TODO: Lock this down in prod?
 app.use(cors());
 
-app.use("/graphql", (req, res, next) => {
+app.use("/graphql", (req: express.Request, _, next: express.NextFunction) => {
   const { operationName } = req.body;
   console.log(
     chalk.bold.magenta("[GraphQL Query]:"),
@@ -72,10 +71,11 @@ const engine = new ApolloEngine({
 // via: https://www.apollographql.com/docs/apollo-server/v2/migration-two-dot.html
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
+  // TODO: Shouldn't have to cast this
+  resolvers: resolvers as IResolvers,
 
   // TODO: We may not always want to do this in production! Consider restricting
-  enableIntrospection: true,
+  introspection: true,
 
   // Addding Apollo Engine
   tracing: true,

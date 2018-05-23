@@ -1,8 +1,11 @@
 {
   "name": "now-todos-server",
   "version": "0.0.0",
+  "engines": {
+    "node": "9.3.0"
+  },
   "scripts": {
-    "now-start": "node .",
+    "now-start": "tsc -p .",
     "start": "nodemon . -e js,graphql",
     "test": "echo \"$(yarn --version)\" && yarn lint-schema && jest --forceExit --verbose",
     "jest-watch": "jest --watch",
@@ -10,21 +13,28 @@
     "lint-schema-watch": "nodemon -e graphql --exec \"yarn run lint-schema\""
   },
   "dependencies": {
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.11.1",
+    "@types/graphql": "^0.13.1",
+    "@types/morgan": "^1.7.35",
+    "@types/ws": "^5.1.1",
     "apollo-engine": "^1.1.1",
-    "apollo-server": "^2.0.0-beta.1",
+    "apollo-server": "^2.0.0-beta.2",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "cors": "^2.8.4",
     "graphql": "^0.13.2",
     "graphql-import": "^0.5.2",
     "morgan": "^1.9.0",
-    "shortid": "^2.2.8"
+    "shortid": "^2.2.8",
+    "typescript": "^2.8.3"
   },
   "devDependencies": {
     "dotenv": "^5.0.1",
     "graphql-schema-linter": "^0.1.6",
     "jest": "^20.0.4",
-    "nodemon": "^1.17.4"
+    "nodemon": "^1.17.4",
+    "ts-node": "^6.0.3"
   },
   "graphql-schema-linter": {
     "rules": [
