@@ -17,7 +17,7 @@ A GraphQL service..._TBD_
 - [ ] Add constraint directives (https://github.com/confuser/graphql-constraint-directive)
 - [ ] Add role-based schema limiting
 - [x] Add Engine/optics
-- [ ] migrate server to typescript
+- [x] migrate server to typescript
 - [ ] Explore using [ts-jest](https://github.com/kulshekhar/ts-jest)
 - [x] Introduce yarn workspaces and create a monorepo (for server and client)
 - [ ] Introduce subscriptions

@@ -5,7 +5,7 @@
     "node": "9.3.0"
   },
   "scripts": {
-    "now-start": "tsc -p .",
+    "now-start": "tsc -p . && node dist/index.js",
     "start": "nodemon -e ts,graphql --exec ts-node index.ts",
     "test": "echo \"$(yarn --version)\" && yarn lint-schema && jest --forceExit --verbose",
     "jest-watch": "jest --watch",

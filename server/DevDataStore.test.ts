@@ -1,7 +1,7 @@
 import devDataStore from "./DevDataStore";
 
 describe("DevDataStore", () => {
-  beforeAllg(() => {
+  beforeAll(() => {
     jest
       .spyOn(devDataStore, "__generateId")
       .mockImplementation(() => "test-id");
