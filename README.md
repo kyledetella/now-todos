@@ -24,6 +24,9 @@ A GraphQL service..._TBD_
 - [x] Add gql2ts
 - [ ] apollo-client
 - [ ] relay client
+- [ ] dockerize app
+- [ ] Introduce subscriptions/live queries
+- [ ] Leverage schema-stitching and implement 3rd party GQL API
 
 # Development
 
