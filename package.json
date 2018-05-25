@@ -6,7 +6,8 @@
   "private": true,
   "workspaces": [
     "server",
-    "client"
+    "client",
+    "ts-client"
   ],
   "scripts": {
     "deploy-server": "now -e APOLLO_ENGINE_KEY=@apollo-engine-key -e NODE_ENV=production server",
