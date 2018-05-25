@@ -33,8 +33,8 @@ A GraphQL service..._TBD_
 ## Client
 
 - [x] Introduce apollo-client
-- [ ] Add typescript to client
-- [ ] Deploy on `now`
+- [x] Add typescript to client
+- [x] Deploy TS client on `now`
 - [ ] relay client
 
 # Development
@@ -89,6 +89,14 @@ now secrets add apollo-engine-key <APOLLO_ENGINE_KEY>
 
 ```
 yarn deploy-server
+```
+
+## Client
+
+### Deploy statically to [now](https://zeit.co/now)
+
+```
+yarn deploy ts-client
 ```
 
 # Generating Types

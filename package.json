@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "deploy-server": "now -e APOLLO_ENGINE_KEY=@apollo-engine-key -e NODE_ENV=production server",
+    "deploy-ts-client": "yarn workspace ts-client build && now -e NODE_ENV=production ts-client/build && echo \"Cleaning up build dir\" && rm -rfv ts-client/build",
     "start": "concurrently \"cd server && yarn start\" \"cd client && yarn start\""
   },
   "devDependencies": {
