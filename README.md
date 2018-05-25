@@ -7,6 +7,14 @@ A GraphQL service..._TBD_
 
 # Todo
 
+## General
+
+- [ ] dockerize app
+- [ ] Introduce subscriptions/live queries
+- [ ] Leverage schema-stitching and implement 3rd party GQL API
+
+## Server
+
 - [x] Create server using apollo-server 2.0
 - [x] deploy on [now.sh](now.sh)
 - [x] Add logging (morgan?)
@@ -20,13 +28,15 @@ A GraphQL service..._TBD_
 - [x] migrate server to typescript
 - [ ] Explore using [ts-jest](https://github.com/kulshekhar/ts-jest)
 - [x] Introduce yarn workspaces and create a monorepo (for server and client)
-- [ ] Introduce subscriptions
 - [x] Add gql2ts
+
+## Client
+
 - [ ] apollo-client
+- [ ] Add typescript to client
+- [ ] Consume live queries/subscriptions
+- [ ] Deploy on `now`
 - [ ] relay client
-- [ ] dockerize app
-- [ ] Introduce subscriptions/live queries
-- [ ] Leverage schema-stitching and implement 3rd party GQL API
 
 # Development
 
