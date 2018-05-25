@@ -32,9 +32,8 @@ A GraphQL service..._TBD_
 
 ## Client
 
-- [ ] apollo-client
+- [x] Introduce apollo-client
 - [ ] Add typescript to client
-- [ ] Consume live queries/subscriptions
 - [ ] Deploy on `now`
 - [ ] relay client
 
