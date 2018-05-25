@@ -1,12 +1,24 @@
+import ApolloClient from "apollo-boost"
 import * as React from 'react';
+import {ApolloProvider} from "react-apollo"
+import {CreateTodo} from "./CreateTodo"
+import {Todos} from "./Todos"
+
 import './App.css';
 
-class App extends React.Component {
+const client = new ApolloClient({
+  uri: "http://localhost:4000/graphql"
+});
+
+class App extends React.PureComponent {
   public render() {
     return (
-      <div className="App">
-        Our app!
-      </div>
+      <ApolloProvider client={client}>
+        <React.Fragment>
+          <Todos />
+          <CreateTodo />
+        </React.Fragment>
+      </ApolloProvider>
     );
   }
 }
