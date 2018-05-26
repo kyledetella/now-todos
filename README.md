@@ -9,9 +9,11 @@ A GraphQL service..._TBD_
 
 ## General
 
-- [ ] dockerize app
 - [ ] Introduce subscriptions/live queries
 - [ ] Leverage schema-stitching and implement 3rd party GQL API
+- [ ] Add ESLint
+- [ ] Remove unused client dir
+- [ ] dockerize app
 
 ## Server
 
