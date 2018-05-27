@@ -14,6 +14,7 @@ A GraphQL service..._TBD_
 - [ ] Add ESLint
 - [ ] Remove unused client dir
 - [ ] dockerize app
+- [ ] relay server/client
 
 ## Server
 
@@ -37,8 +38,8 @@ A GraphQL service..._TBD_
 - [x] Introduce apollo-client
 - [x] Add typescript to client
 - [x] Deploy TS client on `now`
-- [ ] Get tests running on CI
-- [ ] relay client
+- [x] Get tests running on CI
+- [ ] Add proper tests
 
 # Development
 
