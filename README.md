@@ -29,7 +29,7 @@ A GraphQL service..._TBD_
 - [x] Add Engine/optics
 - [x] migrate server to typescript
 - [ ] Explore using [ts-jest](https://github.com/kulshekhar/ts-jest)
-- [x] Introduce yarn workspaces and create a monorepo (for server and client)
+- [x] Introduce yarn workspaces and create a monorepo (for servers and client)
 - [x] Add gql2ts
 
 ## Client
@@ -37,6 +37,7 @@ A GraphQL service..._TBD_
 - [x] Introduce apollo-client
 - [x] Add typescript to client
 - [x] Deploy TS client on `now`
+- [ ] Get tests running on CI
 - [ ] relay client
 
 # Development
