@@ -1,0 +1,10 @@
+"Root subscription"
+type Subscription {
+  "Create a new Todo"
+  todoAdded: Todo
+  something(id: String!): SomeResult!
+}
+
+type SomeResult {
+  name: String!
+}

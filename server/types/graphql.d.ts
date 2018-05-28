@@ -3,7 +3,7 @@
 
 declare namespace NowTodosGQL {
   interface IGraphQLResponseRoot {
-    data?: IQuery | IMutation;
+    data?: IQuery | IMutation | ISubscription;
     errors?: Array<IGraphQLResponseError>;
   }
 
@@ -73,6 +73,28 @@ declare namespace NowTodosGQL {
      * The description for the Todo
      */
     description: string;
+  }
+
+  /**
+   * Root subscription
+   */
+  interface ISubscription {
+    __typename: "Subscription";
+
+    /**
+     * Create a new Todo
+     */
+    todoAdded: ITodo | null;
+    something: ISomeResult;
+  }
+
+  interface ISomethingOnSubscriptionArguments {
+    id: string;
+  }
+
+  interface ISomeResult {
+    __typename: "SomeResult";
+    name: string;
   }
 }
 

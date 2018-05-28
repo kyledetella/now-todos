@@ -14,7 +14,10 @@ class DevDataStore {
   }
 
   createTodo(description: string): Todo {
-    const newTodo = { id: this.__generateId(), description };
+    const newTodo = {
+      id: this.__generateId(),
+      description
+    };
     this._todos.push(newTodo);
 
     return newTodo;
@@ -24,8 +27,8 @@ class DevDataStore {
     return this._todos;
   }
 
-  __generateId() {
-    return shortid();
+  __generateId(): string {
+    return String(shortid() || "");
   }
 }
 
