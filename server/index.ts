@@ -2,7 +2,7 @@ import * as express from "express";
 import * as morgan from "morgan";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
-// import chalk from "chalk";
+import chalk from "chalk";
 import {
   ApolloServer,
   gql,
@@ -13,15 +13,11 @@ import {
 import { registerServer } from "apollo-server-express";
 import { ApolloEngine } from "apollo-engine";
 import { importSchema } from "graphql-import";
-// import { createTodo, getTodos } from "./graphql/resolvers/todos";
-// import { pubsub } from "./pubsub";
 import { createServer } from "http";
 import { SubscriptionServer } from "subscriptions-transport-ws";
 import { execute, subscribe } from "graphql";
 import { pubsub } from "./pubsub";
 import { createTodo, getTodos } from "./graphql/resolvers/todos";
-// import { createTodo } from "./graphql/resolvers/todos";
-// import devDataStore from "./DevDataStore";
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -41,18 +37,15 @@ app.use(morgan("dev"));
 // TODO: Lock this down in prod?
 app.use(cors());
 
-// app.use("/graphql", (req: express.Request, _, next: express.NextFunction) => {
-//   const { operationName } = req.body;
-//   console.log(
-//     chalk.bold.magenta("[GraphQL Query]:"),
-//     operationName || "Anonymous operation!"
-//   );
+app.use("/graphql", (req: express.Request, _, next: express.NextFunction) => {
+  const { operationName } = req.body;
+  console.log(
+    chalk.bold.magenta("[GraphQL Query]:"),
+    operationName || "Anonymous operation!"
+  );
 
-//   next();
-// });
-
-// type Todo = { id: string; description: string };
-// const todosStore: Todo[] = [];
+  next();
+});
 
 app.get("/", (req, res) => {
   const { headers } = req;
@@ -106,14 +99,11 @@ const server = new ApolloServer({
 registerServer({ app, server });
 
 const createWebsocketServer = () => {
-  // Create WS server
-  // Create WebSocket listener server
   const websocketServer = createServer((_, response) => {
     response.writeHead(404);
     response.end();
   });
 
-  // Bind it to port and start listening
   websocketServer.listen(WS_PORT, () =>
     console.log(
       `Websocket Server is now running on http://localhost:${WS_PORT}`
@@ -121,8 +111,6 @@ const createWebsocketServer = () => {
   );
   SubscriptionServer.create(
     {
-      // Convert compiled schema String to GraphQL Object
-      // via: https://dev-blog.apollodata.com/three-ways-to-represent-your-graphql-schema-a41f4175100d
       schema: makeExecutableSchema({
         typeDefs: schema,
         resolvers
@@ -136,11 +124,6 @@ const createWebsocketServer = () => {
     }
   );
 };
-
-// app.listen(PORT, () => {
-//   console.log(`🚀 Server ready! @:${PORT}`);
-//   createWebsocketServer()
-// });
 
 engine.listen(
   {
