@@ -1,10 +1,7 @@
+# import Todo from "./types.graphql"
+
 "Root subscription"
 type Subscription {
-  "Create a new Todo"
+  "Event triggered when todo is added"
   todoAdded: Todo
-  something(id: String!): SomeResult!
-}
-
-type SomeResult {
-  name: String!
 }
