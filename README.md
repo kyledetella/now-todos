@@ -10,6 +10,7 @@ A GraphQL service..._TBD_
 ## General
 
 - [ ] Introduce subscriptions/live queries
+  - [ ] Split servers & deployments (WS server)
 - [ ] Leverage schema-stitching and implement 3rd party GQL API
 - [ ] Add ESLint
 - [ ] Remove unused client dir
