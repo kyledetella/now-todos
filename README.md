@@ -15,6 +15,8 @@ A GraphQL service..._TBD_
 - [ ] Remove unused client dir
 - [ ] dockerize app
 - [ ] relay server/client
+- [ ] Share TS types between client and Server
+- [ ] Add Delete todos mutation (and update via subscriptions)
 
 ## Server
 
