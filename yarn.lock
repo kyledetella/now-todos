@@ -33,6 +33,12 @@
     humps "^2.0.0"
     typescript "^2.2.2"
 
+"@gql2ts/types@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@gql2ts/types/-/types-1.8.0.tgz#ee20fa55b157352b4a96ba647c1d3e1c0b0b4184"
+  dependencies:
+    "@gql2ts/util" "^1.8.0"
+
 "@gql2ts/util@^1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@gql2ts/util/-/util-1.8.0.tgz#23612425b43ba1a6534e7783137276f4f567a417"
@@ -8361,7 +8367,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@^2.2.2, typescript@^2.8.3:
+typescript@^2.2.2:
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.4.tgz#0b1db68e6bdfb0b767fa2ab642136a35b059b199"
+
+typescript@^2.8.3:
   version "2.8.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.3.tgz#5d817f9b6f31bb871835f4edf0089f21abe6c170"
 
