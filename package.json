@@ -6,14 +6,13 @@
   "private": true,
   "workspaces": [
     "server",
-    "client",
-    "ts-client"
+    "client"
   ],
   "scripts": {
-    "deploy-server": "now -e APOLLO_ENGINE_KEY=@apollo-engine-key -e NODE_ENV=production server",
-    "deploy-ts-client": "yarn workspace ts-client build && now -e NODE_ENV=production ts-client/build && echo \"Cleaning up build dir\" && rm -rfv ts-client/build",
+    "deploy-server": "now -e APOLLO_ENGINE_KEY=@apollo-engine-key -e NODE_ENV=production -n now-todos-server server",
+    "deploy-client": "yarn workspace client build && now -e NODE_ENV=production client/build && echo \"Cleaning up build dir\" && rm -rfv client/build",
     "start": "concurrently \"cd server && yarn start\" \"cd client && yarn start\"",
-    "clean": "rm -rf {./,server,client,ts-client}/node_modules"
+    "clean": "rm -rf {./,server,client}/node_modules"
   },
   "devDependencies": {
     "concurrently": "^3.5.1"

@@ -100,7 +100,7 @@ yarn deploy-server
 ### Deploy statically to [now](https://zeit.co/now)
 
 ```
-yarn deploy ts-client
+yarn deploy client
 ```
 
 # Generating Types
@@ -108,5 +108,5 @@ yarn deploy ts-client
 You can generate Typescript definitions from the GraphQL schema using [gql2ts](https://github.com/avantcredit/gql2ts)
 
 ```
-yarn workspace now-todos-server generate-types
+yarn workspace server generate-types
 ```

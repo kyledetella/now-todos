@@ -33,11 +33,10 @@ jobs:
             - node_modules
             - server/node_modules
             - client/node_modules
-            - ts-client/node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
       - run: cd server && yarn test
-      - run: cd ts-client && yarn test
+      - run: cd client && yarn test
 
 
