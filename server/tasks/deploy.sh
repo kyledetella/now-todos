@@ -11,14 +11,11 @@ COL_BLUE=$ESC_SEQ"34;01m"
 COL_MAGENTA=$ESC_SEQ"35;01m"
 COL_CYAN=$ESC_SEQ"36;01m"
 
-local_deployment_id=$(uuidgen)
-
 deploy() {
-  echo -e "$COL_GREEN> Initializing server deploy ($local_deployment_id)$COL_RESET"
+  echo -e "$COL_GREEN> Initializing server deploy$COL_RESET"
   now \
   -e APOLLO_ENGINE_KEY=@apollo-engine-key \
   -e NODE_ENV=production \
-  -e DEPLOYMENT_ID=$local_deployment_id
   -n now-todos-server \
   server
 }

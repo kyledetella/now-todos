@@ -58,7 +58,16 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     todos: getTodos,
-    deployment: () => process.env.DEPLOYMENT_ID || String(Date.now())
+    deployment: () => {
+      const o = {
+        nowURL: process.env.NOW_URL || "__local",
+        id: process.env.DEPLOYMENT_ID || "__local"
+      };
+
+      console.log(o);
+
+      return o;
+    }
   },
   Mutation: {
     createTodo: createTodo

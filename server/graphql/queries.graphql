@@ -1,7 +1,10 @@
+# import Todo from "./types.graphql"
+# import DeploymentMetadata from "./types.graphql"
+
 "Root query"
 type Query {
   "Retrieve all todos for the current user"
   todos: [Todo]!
   "USE WITH CAUTION!"
-  deployment: String!
+  deployment: DeploymentMetadata!
 }

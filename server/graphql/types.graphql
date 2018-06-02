@@ -11,3 +11,14 @@ input CreateTodoInput {
   "The description for the Todo"
   description: String!
 }
+
+"""Metadata about the deployed application.
+
+> **NOTE** – THIS DATA IS PRIVATE AND WILL BE REMOVED EVENTUALLY
+"""
+type DeploymentMetadata {
+  "URL for the [`now` deployment](https://zeit.co/docs/features/env-and-secrets#default-variables)"
+  nowURL: String!
+  "Deployment ID for the [`now` deployment](https://zeit.co/docs/features/env-and-secrets#default-variables)"
+  id: ID!
+}
