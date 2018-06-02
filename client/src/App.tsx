@@ -1,13 +1,16 @@
-import ApolloClient from "apollo-boost"
-import * as React from 'react';
-import {ApolloProvider} from "react-apollo"
-import {CreateTodo} from "./CreateTodo"
-import {Todos} from "./Todos"
+import ApolloClient from "apollo-boost";
+import * as React from "react";
+import { ApolloProvider } from "react-apollo";
+import { CreateTodo } from "./CreateTodo";
+import { Todos } from "./Todos";
 
-import './App.css';
+import "./App.css";
+
+const graphQLEndpoint =
+  process.env.REACT_APP_GRAPHQL_API_URL || "http://localhost:4000/graphql";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
+  uri: graphQLEndpoint
 });
 
 class App extends React.PureComponent {

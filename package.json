@@ -9,8 +9,8 @@
     "client"
   ],
   "scripts": {
-    "deploy-server": "now -e APOLLO_ENGINE_KEY=@apollo-engine-key -e NODE_ENV=production -n now-todos-server server",
-    "deploy-client": "yarn workspace client build && now -e NODE_ENV=production client/build && echo \"Cleaning up build dir\" && rm -rfv client/build",
+    "deploy-server": "./server/tasks/deploy.js",
+    "deploy-client": "REACT_APP_GRAPHQL_API_URL=https://now-todos-server.now.sh/graphql yarn workspace client build && now -e NODE_ENV=production -n now-todos-client client/build && echo \"Cleaning up build dir\" && rm -rfv client/build",
     "start": "concurrently \"cd server && yarn start\" \"cd client && yarn start\"",
     "clean": "rm -rf {./,server,client}/node_modules"
   },

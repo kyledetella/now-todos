@@ -57,7 +57,8 @@ const typeDefs = gql`
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    todos: getTodos
+    todos: getTodos,
+    deployment: () => process.env.DEPLOYMENT_ID || String(Date.now())
   },
   Mutation: {
     createTodo: createTodo
