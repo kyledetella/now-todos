@@ -14,6 +14,7 @@
     "generate-types": "ts-node ./tasks/generateTypesFromSchema.ts"
   },
   "dependencies": {
+    "@axelspringer/graphql-google-pubsub": "^1.0.7",
     "@gql2ts/from-schema": "^1.8.0",
     "@gql2ts/types": "^1.8.0",
     "@types/cors": "^2.8.4",

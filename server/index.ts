@@ -7,7 +7,7 @@ import {
   ApolloServer,
   gql,
   IResolvers,
-  withFilter,
+  // withFilter,
   makeExecutableSchema
 } from "apollo-server";
 import { registerServer } from "apollo-server-express";
@@ -74,7 +74,7 @@ const resolvers = {
   },
   Subscription: {
     todoAdded: {
-      subscribe: withFilter(() => pubsub.asyncIterator("todoAdded"), () => true)
+      subscribe: () => pubsub.asyncIterator("todoAdded") //withFilter(() => pubsub.asyncIterator("todoAdded"), () => true)
     }
   }
 };

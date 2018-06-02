@@ -47,6 +47,7 @@ class TodosSubscriber extends React.PureComponent<ITodosSubscriberProps> {
 export const Todos = () => (
   <Query query={GET_TODOS}>
     {({ subscribeToMore, loading, error, data }) => {
+      console.log('!!!!', data) // tslint:disable-line
       if (loading) {
         return <p>Loading...</p>;
       }

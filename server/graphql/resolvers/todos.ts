@@ -1,10 +1,12 @@
 import devDataStore from "../../DevDataStore";
 import { pubsub } from "../../pubsub";
 
-export const createTodo = (_: any, { input }: any) => {
+export const createTodo = async (_: any, { input }: any) => {
   const newTodo = devDataStore.createTodo(input.description);
 
-  pubsub.publish("todoAdded", { todoAdded: newTodo });
+  // TODO: Broadcast over Google pubsub
+  // await pubsub.publish()
+  await pubsub.publish("todoAdded", { todoAdded: newTodo });
 
   return newTodo;
 };
