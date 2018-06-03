@@ -30,6 +30,11 @@ declare namespace NowTodosGQL {
      * Retrieve all todos for the current user
      */
     todos: Array<ITodo>;
+
+    /**
+     * USE WITH CAUTION!
+     */
+    deployment: IDeploymentMetadata;
   }
 
   /**
@@ -41,12 +46,31 @@ declare namespace NowTodosGQL {
     /**
      * The unique ID representing the Todo
      */
-    id: string;
+    _id: string;
 
     /**
      * The description to be rendered for a given Todo
      */
     description: string;
+  }
+
+  /**
+   * Metadata about the deployed application.
+   *
+   * > **NOTE** – THIS DATA IS PRIVATE AND WILL BE REMOVED EVENTUALLY
+   */
+  interface IDeploymentMetadata {
+    __typename: "DeploymentMetadata";
+
+    /**
+     * URL for the [`now` deployment](https://zeit.co/docs/features/env-and-secrets#default-variables)
+     */
+    nowURL: string;
+
+    /**
+     * Deployment ID for the [`now` deployment](https://zeit.co/docs/features/env-and-secrets#default-variables)
+     */
+    id: string;
   }
 
   /**

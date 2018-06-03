@@ -8,17 +8,31 @@ import { registerServer } from "apollo-server-express";
 import { ApolloEngine } from "apollo-engine";
 import { importSchema } from "graphql-import";
 import { createTodo, getTodos } from "./graphql/resolvers/todos";
+import { initializeDB } from "./db";
+import { Db } from "mongodb";
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-const { PORT = 4000, APOLLO_ENGINE_KEY } = process.env;
+const {
+  PORT = 4000,
+  APOLLO_ENGINE_KEY,
+  DB_NAME,
+  DB_PASSWORD,
+  DB_USER
+} = process.env;
 const app = express();
 
 if (!APOLLO_ENGINE_KEY) {
   throw new Error(
     "A valid Apollo Engine API key is required. See: https://www.apollographql.com/docs/engine/setup-node.html"
+  );
+}
+
+if (!DB_NAME || !DB_PASSWORD || !DB_USER) {
+  throw new Error(
+    "Valid database configuration credentials are required. Please provide `DB_{USER,PASSWORD,NAME}"
   );
 }
 
@@ -58,48 +72,54 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     todos: getTodos,
-    deployment: () => {
-      const o = {
-        nowURL: process.env.NOW_URL || "__local",
-        id: process.env.DEPLOYMENT_ID || "__local"
-      };
-
-      console.log(o);
-
-      return o;
-    }
+    deployment: () => ({
+      nowURL: process.env.NOW_URL || "__local",
+      id: process.env.DEPLOYMENT_ID || "__local"
+    })
   },
   Mutation: {
     createTodo: createTodo
   }
 };
 
-const engine = new ApolloEngine({
-  apiKey: APOLLO_ENGINE_KEY
-});
+(async () => {
+  // Setup DB
+  const db: Db = await initializeDB({
+    name: DB_NAME,
+    password: DB_PASSWORD,
+    user: DB_USER
+  });
 
-// via: https://www.apollographql.com/docs/apollo-server/v2/migration-two-dot.html
-const server = new ApolloServer({
-  typeDefs,
-  // TODO: Shouldn't have to cast this
-  resolvers: resolvers as IResolvers,
+  // via: https://www.apollographql.com/docs/apollo-server/v2/migration-two-dot.html
+  const server = new ApolloServer({
+    typeDefs,
+    // TODO: Shouldn't have to cast this
+    resolvers: resolvers as IResolvers,
 
-  // TODO: We may not always want to do this in production! Consider restricting
-  introspection: true,
+    context: { db },
 
-  // Addding Apollo Engine
-  tracing: true,
-  cacheControl: true
-});
-registerServer({ app, server });
+    // TODO: We may not always want to do this in production! Consider restricting
+    introspection: true,
 
-engine.listen(
-  {
-    port: PORT,
-    expressApp: app
-  },
-  () => {
-    console.log(`🚀 Server ready! @:${PORT}`);
-    console.log("Running via ts");
-  }
-);
+    // Addding Apollo Engine
+    tracing: true,
+    cacheControl: true
+  });
+  registerServer({ app, server });
+
+  // Set up ApolloEngine
+  const engine = new ApolloEngine({
+    apiKey: APOLLO_ENGINE_KEY
+  });
+
+  engine.listen(
+    {
+      port: PORT,
+      expressApp: app
+    },
+    () => {
+      console.log(`🚀 Server ready! @:${PORT}`);
+      console.log("Running via ts");
+    }
+  );
+})();

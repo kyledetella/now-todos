@@ -6,7 +6,7 @@ export const GET_TODOS = gql`
   {
     todos {
       description
-      id
+      _id
     }
   }
 `;
@@ -27,7 +27,7 @@ export const Todos = () => (
           {data.todos.length ? (
             <ul>
               {data.todos.map((todo: any) => (
-                <li key={todo.id}>{todo.description}</li>
+                <li key={todo._id}>{todo.description}</li>
               ))}
             </ul>
           ) : (

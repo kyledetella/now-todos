@@ -15,6 +15,9 @@ deploy() {
   echo -e "$COL_GREEN> Initializing server deploy$COL_RESET"
   now \
   -e APOLLO_ENGINE_KEY=@apollo-engine-key \
+  -e DB_USER=@now-todos-db-user \
+  -e DB_PASSWORD=@now-todos-db-password \
+  -e DB_NAME=@now-todos-db-name \
   -e NODE_ENV=production \
   -n now-todos-server \
   server

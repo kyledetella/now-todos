@@ -6,7 +6,7 @@ import { GET_TODOS } from "./Todos";
 export const CREATE_TODO = gql`
   mutation createTodo($input: CreateTodoInput!) {
     createTodo(input: $input) {
-      id
+      _id
       description
     }
   }

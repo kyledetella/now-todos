@@ -45,15 +45,24 @@ A GraphQL service..._TBD_
 
 ## Server
 
-**Note:** You will need to obtain an Apollo Engine API Key. Read more on [Apollo Engine here](https://www.apollographql.com/docs/engine/setup-node.html).
+### Environment variables
 
 Add the following to a `.env` file in `/server`:
 
 ```
 APOLLO_ENGINE_KEY=<APOLLO_ENGINE_KEY>
+DB_USER=<DB_USERNAME>
+DB_PASSWORD=<DB_PASSWORD>
+DB_NAME=<DB_NAME>
 ```
 
-Or provide the `APOLLO_ENGINE_KEY` environment variable when starting the server.
+#### Apollo Engine
+
+You will need to obtain an Apollo Engine API Key. Read more on [Apollo Engine here](https://www.apollographql.com/docs/engine/setup-node.html).
+
+#### mlab
+
+This project is structured to connect to a mongodb database using [mlab.com](mlab.com)
 
 **Dependencies**
 
