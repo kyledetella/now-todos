@@ -3,13 +3,10 @@ import * as morgan from "morgan";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import chalk from "chalk";
-import { ApolloServer, gql, IResolvers } from "apollo-server";
-import { registerServer } from "apollo-server-express";
 import { ApolloEngine } from "apollo-engine";
-import { importSchema } from "graphql-import";
-import { createTodo, getTodos } from "./graphql/resolvers/todos";
 import { initializeDB } from "./db";
 import { Db } from "mongodb";
+import initalizeApolloServer from "./graphql/initializeApolloServer";
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -61,27 +58,6 @@ app.get("/", (req, res) => {
   }
 });
 
-const schema = importSchema("./graphql/schema.graphql");
-
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  ${schema}
-`;
-
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    todos: getTodos,
-    deployment: () => ({
-      nowURL: process.env.NOW_URL || "__local",
-      id: process.env.DEPLOYMENT_ID || "__local"
-    })
-  },
-  Mutation: {
-    createTodo: createTodo
-  }
-};
-
 (async () => {
   // Setup DB
   const db: Db = await initializeDB({
@@ -90,22 +66,8 @@ const resolvers = {
     user: DB_USER
   });
 
-  // via: https://www.apollographql.com/docs/apollo-server/v2/migration-two-dot.html
-  const server = new ApolloServer({
-    typeDefs,
-    // TODO: Shouldn't have to cast this
-    resolvers: resolvers as IResolvers,
-
-    context: { db },
-
-    // TODO: We may not always want to do this in production! Consider restricting
-    introspection: true,
-
-    // Addding Apollo Engine
-    tracing: true,
-    cacheControl: true
-  });
-  registerServer({ app, server });
+  // Setup ApolloServer
+  initalizeApolloServer(app, db);
 
   // Set up ApolloEngine
   const engine = new ApolloEngine({
@@ -117,9 +79,6 @@ const resolvers = {
       port: PORT,
       expressApp: app
     },
-    () => {
-      console.log(`🚀 Server ready! @:${PORT}`);
-      console.log("Running via ts");
-    }
+    () => console.log(`🚀 Server ready! @:${PORT}`)
   );
 })();
