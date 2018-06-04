@@ -31,5 +31,6 @@ input DeleteTodoInput {
 
 "Result of deleting a Todo"
 type DeleteTodoResponsePayload {
+  "Whether or not the delete action was successful"
   success: Boolean!
 }
