@@ -1,6 +1,7 @@
 import gql from "graphql-tag";
 import * as React from "react";
 import { Query } from "react-apollo";
+import { Todo } from "./Todo";
 
 export const GET_TODOS = gql`
   {
@@ -26,8 +27,8 @@ export const Todos = () => (
           <h2>Todos (name):</h2>
           {data.todos.length ? (
             <ul>
-              {data.todos.map((todo: any) => (
-                <li key={todo._id}>{todo.description}</li>
+              {data.todos.map((todo: ITodo) => (
+                <Todo key={todo._id} todo={todo} />
               ))}
             </ul>
           ) : (
