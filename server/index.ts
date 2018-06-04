@@ -58,7 +58,7 @@ app.get("/", (req, res) => {
   }
 });
 
-(async () => {
+const Main = async () => {
   // Setup DB
   const db: Db = await initializeDB({
     name: DB_NAME,
@@ -81,4 +81,9 @@ app.get("/", (req, res) => {
     },
     () => console.log(`🚀 Server ready! @:${PORT}`)
   );
-})();
+};
+
+Main().catch(err => {
+  console.log("Error starting application\n");
+  console.log(err);
+});

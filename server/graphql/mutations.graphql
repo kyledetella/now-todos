@@ -1,8 +1,13 @@
 # import Todo from "./types.graphql"
+# import DeleteTodoPayload from "./types.graphql"
 # import CreateTodoInput from "./types.graphql"
+# import DeleteTodoInput from "./types.graphql"
 
 "Root mutation"
 type Mutation {
   "Create a new Todo"
   createTodo(input: CreateTodoInput!): Todo
+
+  "Delete a single Todo"
+  deleteTodo(input: DeleteTodoInput!): DeleteTodoResponsePayload!
 }

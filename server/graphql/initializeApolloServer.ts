@@ -1,7 +1,7 @@
 import * as path from "path";
 import { ApolloServer, gql, IResolvers } from "apollo-server";
 import { importSchema } from "graphql-import";
-import { getTodos, createTodo } from "./resolvers/todos";
+import { getTodos, createTodo, deleteTodo } from "./resolvers/todos";
 import { Application } from "express";
 import { Db } from "mongodb";
 import { registerServer } from "apollo-server-express";
@@ -23,7 +23,8 @@ const resolvers = {
     })
   },
   Mutation: {
-    createTodo: createTodo
+    createTodo: createTodo,
+    deleteTodo: deleteTodo
   }
 };
 

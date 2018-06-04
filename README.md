@@ -12,7 +12,10 @@ A GraphQL service..._TBD_
 - [ ] Introduce subscriptions/live queries
 - [ ] Leverage schema-stitching and implement 3rd party GQL API
 - [ ] Add ESLint
-- [ ] Remove unused client dir
+- [ ] Use apollo-codegen to generate TS defs (+ try out Flowtype defs)
+- [ ] Add users and auth
+- [ ] Add ability to delete todos
+- [x] Remove unused client dir
 - [ ] dockerize app
 - [ ] relay server/client
 

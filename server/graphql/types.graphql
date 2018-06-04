@@ -22,3 +22,14 @@ type DeploymentMetadata {
   "Deployment ID for the [`now` deployment](https://zeit.co/docs/features/env-and-secrets#default-variables)"
   id: ID!
 }
+
+"Input for deleting a Todo"
+input DeleteTodoInput {
+  "The id of the Todo to delete (`**Note:** this will be _id`)"
+  id: ID!
+}
+
+"Result of deleting a Todo"
+type DeleteTodoResponsePayload {
+  success: Boolean!
+}

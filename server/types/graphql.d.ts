@@ -83,10 +83,19 @@ declare namespace NowTodosGQL {
      * Create a new Todo
      */
     createTodo: ITodo | null;
+
+    /**
+     * Delete a single Todo
+     */
+    deleteTodo: IDeleteTodoResponsePayload;
   }
 
   interface ICreateTodoOnMutationArguments {
     input: ICreateTodoInput;
+  }
+
+  interface IDeleteTodoOnMutationArguments {
+    input: IDeleteTodoInput;
   }
 
   /**
@@ -97,6 +106,24 @@ declare namespace NowTodosGQL {
      * The description for the Todo
      */
     description: string;
+  }
+
+  /**
+   * Input for deleting a Todo
+   */
+  interface IDeleteTodoInput {
+    /**
+     * The id of the Todo to delete (`**Note:** this will be _id`)
+     */
+    id: string;
+  }
+
+  /**
+   * Result of deleting a Todo
+   */
+  interface IDeleteTodoResponsePayload {
+    __typename: "DeleteTodoResponsePayload";
+    success: boolean;
   }
 }
 
