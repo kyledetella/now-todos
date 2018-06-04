@@ -4,7 +4,7 @@
 
 A GraphQL service..._TBD_
 
-Latest version(s) deployed to: [https://now-todos-server.now.sh/graphql](https://now-todos-server.now.sh/)
+Latest version(s) deployed to: [https://now-todos-server.now.sh/graphql](https://now-todos-server.now.sh/graphql)
 
 # Todo
 
