@@ -4,6 +4,7 @@
 
 A GraphQL service..._TBD_
 
+Latest version(s) deployed to: [https://now-todos-server.now.sh/graphql](https://now-todos-server.now.sh/)
 
 # Todo
 
@@ -15,6 +16,8 @@ A GraphQL service..._TBD_
 - [ ] Use apollo-codegen to generate TS defs (+ try out Flowtype defs)
 - [ ] Add users and auth
 - [ ] Add ability to delete todos
+  - [ ] Server
+  - [ ] Client
 - [x] Remove unused client dir
 - [ ] dockerize app
 - [ ] relay server/client
