@@ -2,7 +2,7 @@
   "name": "server",
   "version": "0.0.0",
   "engines": {
-    "node": "9.3.0"
+    "node": "8.11.2"
   },
   "scripts": {
     "now-start": "tsc -p . && node dist/index.js",
@@ -31,6 +31,7 @@
     "cors": "^2.8.4",
     "graphql": "^0.13.2",
     "graphql-import": "^0.5.2",
+    "graphql-tag": "^2.9.2",
     "mongodb": "^3.0.10",
     "morgan": "^1.9.0",
     "typescript": "^2.8.3"
